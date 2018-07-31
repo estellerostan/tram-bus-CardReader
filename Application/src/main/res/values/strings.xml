@@ -15,10 +15,10 @@ limitations under the License.
 -->
 
 <resources>
-    <string name="card_title">Sample Loyalty Card</string>
-    <string name="account_number">Account Number</string>
+    <string name="card_title">Carte détectée</string>
+    <string name="account_number">Numéro de compte</string>
 
-    <string name="title_activity_validation">ValidationActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_validation">Validation du ticket</string>
+    <string name="dummy_button">Retour</string>
+    <string name="dummy_content">Transaction\nterminée</string>
 </resources>

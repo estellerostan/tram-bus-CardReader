@@ -1,4 +1,4 @@
-package com.example.android.cardreader;
+package com.example.android.domainview;
 
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.android.cardreader.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.

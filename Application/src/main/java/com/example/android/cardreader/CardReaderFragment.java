@@ -28,6 +28,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.common.logger.Log;
+import com.example.android.domaindata.User;
+import com.example.android.domainview.ValidationActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -139,8 +141,5 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
 
             }
         });
-
-        // validate it
-        // nfc the result back
     }
 }

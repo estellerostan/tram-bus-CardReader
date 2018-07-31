@@ -1,4 +1,4 @@
-package com.example.android.cardreader;
+package com.example.android.domaindata;
 
 import java.util.Date;
 
