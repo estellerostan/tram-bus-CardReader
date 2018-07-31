@@ -17,8 +17,10 @@
 package com.example.android.cardreader;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,11 +28,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.android.common.logger.Log;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * Generic UI for sample discovery.
  */
 public class CardReaderFragment extends Fragment implements LoyaltyCardReader.AccountCallback {
+
+    public static final String USERS_TABLE = "users";
 
     public static final String TAG = "CardReaderFragment";
     // Recommend NfcAdapter flags for reading from other Android devices. Indicates that this
@@ -105,5 +114,33 @@ public class CardReaderFragment extends Fragment implements LoyaltyCardReader.Ac
                 mAccountField.setText(account);
             }
         });
+
+        // get user from users database
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(USERS_TABLE).child(account);
+
+        // get active ticket
+        // on ne veut le ticket qu'une fois
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user.activeTicket != null) {
+                    Intent intent = new Intent(getActivity(), ValidationActivity.class);
+                    intent.putExtra("TICKET", user.activeTicket);
+                    startActivity(intent);
+                }
+                else {
+                    // TODO:
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // validate it
+        // nfc the result back
     }
 }

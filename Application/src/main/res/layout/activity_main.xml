@@ -61,5 +61,14 @@
           android:layout_width="match_parent"
           android:layout_height="0px" />
 
+    <TextView
+        android:id="@+id/validated_ticket"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="100dp"
+        android:layout_toEndOf="@id/log_fragment" />
+
 </LinearLayout>
 
